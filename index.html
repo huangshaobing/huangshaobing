@@ -55,7 +55,7 @@ title: Clover Blog
                   -->
                   <p><span class="date-artical pull-left lh30">{{ post.date | date: "%Y年%m月%d日" }}
                       {% for tag in post.tags %}
-                        <a class="tags-title" href="/tag/#{{ tag }}-ref">{{ tag }}</a>&nbsp;
+                        <a class="tags-title" href="{{ site.baseurl }}/tag/#{{ tag }}-ref">{{ tag }}</a>&nbsp;
                       {% endfor %}
                       </span><a class="btn btn-primary pull-right" rel="nofollow" href='{{post.url | prepend: site.baseurl}}' target="_blank">阅读全文</a></p>
               </div><hr>
@@ -90,7 +90,7 @@ title: Clover Blog
                   {% if paginator.previous_page == 1 %}
                   <a href="{{site.baseurl}}">
                     {% else %}
-                    <a href="/page{{ paginator.previous_page }}">
+                    <a href="{{ site.baseurl }}/page{{ paginator.previous_page }}">
                       {% endif %}
                       <span>&laquo;</span>
                     </a>
