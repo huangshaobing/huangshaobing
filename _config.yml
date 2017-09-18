@@ -5,7 +5,7 @@ author: Shaobing Huang
 url: https://huangshaobing.github.io/huangshaobing
 resume_site: https://huangshaobing.github.io/huangshaobing
 github: https://huangshaobing.github.io/huangshaobing
-baseurl: ""  #根目录
+baseurl: "/huangshaobing"  #根目录
 description: 世界辣么大，我也想去瞧瞧。
 motto: 世界辣么大，我也想去瞧瞧。
 banner: Clover Blog
