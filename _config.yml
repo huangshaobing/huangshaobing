@@ -1,0 +1,26 @@
+# Site settings
+name: Clover Blog
+email: huang_shaobing@163.com
+author: Shaobing Huang
+url: https://huangshaobing.github.io/huangshaobing
+resume_site: https://huangshaobing.github.io/huangshaobing
+github: https://huangshaobing.github.io/huangshaobing
+baseurl: ""  #根目录
+description: 世界辣么大，我也想去瞧瞧。
+motto: 世界辣么大，我也想去瞧瞧。
+banner: Clover Blog
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+excerpt_separator:  '<!-- more -->' #文章摘要
+paginate: 8
+paginate_path: "page:num"
+gems: [jekyll-paginate]
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+github_username: huangshaobing
+highlighter: rouge
+markdown: kramdown
+FB:
+  comments :
+    provider : disqus
+    disqus :
+        short_name : hsbing
