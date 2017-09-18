@@ -170,9 +170,15 @@ title: Clover Blog
                   {% endif %}
                 </li>
                 <li>
+                  {% if paginator.total_pages == 1 %}
+                  <a href="{{site.baseurl}}">
+                    <span>末页</span>
+                  </a>
+                  {% else %}
                   <a href="{{site.baseurl}}/page{{paginator.total_pages}}">
                     <span>末页</span>
                   </a>
+                  {% endif %}
                 </li>
               </ul>
           </div>
