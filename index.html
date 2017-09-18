@@ -23,11 +23,11 @@ title: Clover Blog
               <li id="tagscloud">
                 {% if site.tags.first[0] == null %}
                 {% for tag in site.tags %}
-                <a href="/tag/{{ site.JB.tags_path }}#{{ tag }}-ref">{{ tag }}</a>
+                <a href="{{site.baseurl}}/tag/{{ site.JB.tags_path }}#{{ tag }}-ref">{{ tag }}</a>
                 {% endfor %}
                 {% else %}
                 {% for tag in site.tags %}
-                <a href="/tag/{{ site.JB.tags_path }}#{{ tag[0] }}-ref">{{ tag[0] }}</a>
+                <a href="{{site.baseurl}}/tag/{{ site.JB.tags_path }}#{{ tag[0] }}-ref">{{ tag[0] }}</a>
                 {% endfor %}
                 {% endif %}
               </li>
@@ -57,7 +57,7 @@ title: Clover Blog
                       {% for tag in post.tags %}
                         <a class="tags-title" href="/tag/#{{ tag }}-ref">{{ tag }}</a>&nbsp;
                       {% endfor %}
-                      </span><a class="btn btn-primary pull-right" rel="nofollow" href='{{post.url}}' target="_blank">阅读全文</a></p>
+                      </span><a class="btn btn-primary pull-right" rel="nofollow" href='{{post.url | prepend: site.baseurl}}' target="_blank">阅读全文</a></p>
               </div><hr>
               {% if forloop.last %}
             </div>
@@ -79,7 +79,7 @@ title: Clover Blog
               <!-- 分页链接 -->
               <ul class="pagination">
                 <li>
-                  <a href="/">
+                  <a href="{{site.baseurl}}">
                     <span>首页</span>
                   </a>
                 </li>
@@ -88,7 +88,7 @@ title: Clover Blog
                   <span>&laquo;</span>
                   {% else %}
                   {% if paginator.previous_page == 1 %}
-                  <a href="/">
+                  <a href="{{site.baseurl}}">
                     {% else %}
                     <a href="/page{{ paginator.previous_page }}">
                       {% endif %}
@@ -154,9 +154,9 @@ title: Clover Blog
                 {% if count == curr_page_num %}
                 <span class="active">{{ count }}</span>
                 {% elsif count == '1' %}
-                <a href="/">{{ count }}</a>
+                <a href="{{site.baseurl}}">{{ count }}</a>
                 {% else %}
-                <a href="/page{{ count }}/">{{ count }}</a>
+                <a href="{{site.baseurl}}/page{{ count }}/">{{ count }}</a>
                 {% endif %}
                 {% endfor %}
                 </li>
@@ -164,13 +164,13 @@ title: Clover Blog
                   {% if paginator.page == paginator.total_pages %}
                   <span>&raquo;</span>
                   {% else %}
-                  <a href="/page{{ paginator.next_page }}">
+                  <a href="{{site.baseurl}}/page{{ paginator.next_page }}">
                     <span>&raquo;</span>
                   </a>
                   {% endif %}
                 </li>
                 <li>
-                  <a href="/page{{paginator.total_pages}}">
+                  <a href="{{site.baseurl}}/page{{paginator.total_pages}}">
                     <span>末页</span>
                   </a>
                 </li>
