@@ -17,10 +17,3 @@ paginate_path: "page:num"
 gems: [jekyll-paginate]
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 github_username: huangshaobing
-highlighter: rouge
-markdown: kramdown
-FB:
-  comments :
-    provider : disqus
-    disqus :
-        short_name : hsbing
