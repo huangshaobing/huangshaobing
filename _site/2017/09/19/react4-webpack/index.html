@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>React Webpack工程搭建</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="robots" content="index,follow">
+	<link rel="shortcut icon" href="/styles/images/favicon.png">
+	<link rel="icon" href="/styles/images/favicon.png">
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="canonical" href="https://huangshaobing.github.io/huangshaobing">
+	<!--[if lte IE 9]>
+    	<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+  	<![endif]-->
+	<!--[if lt IE 9]>
+    	<script>window.location.href='/upgrade-your-browser.html';</script>
+    <![endif]-->
+</head>
+  <body class="index">
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.png" alt="Clover个人博客">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li></li>
+        <li>
+          <a href="/">首页</a>
+        </li>
+        <li>
+          <a href="/categories/">博文分类</a>
+        </li>
+        <li>
+          <a href="/tag">标签目录</a>
+        </li>
+        <li><a rel="nofollow" href="/me">关于我</a></li> 
+
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="docs-header pa" id="content">
+    <canvas id="mycanvas">你的浏览器不支持canvas</canvas>
+    <div class="container" >
+  	
+        <!--
+		    <h1>React Webpack工程搭建</h1>
+		    <p>Post on Sep 19, 2017 by <a href="/about">Shaobing Huang</a></p>
+		-->
+        <h1>世界辣么大，我也想去瞧瞧。</h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container lh30">
+  	
+    	<a href="/categories/#React-ref">React</a>	/
+    	<a href="/tag/#React-ref">React</a>
+    
+<!--       <div id="search-container" class="pull-right">
+          <input type="text" id="search-input" placeholder=" 试试直接搜索吧...">
+          <label class="searchIcon glyphicon glyphicon-search" for="search-input"></label>
+          <ul id="results-container"></ul>
+      </div>
+ -->  </div>
+</div>
+
+    
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+  </ul>
+</div> 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">React Webpack工程搭建</h1>
+              <!--
+                <p class="post-meta">Sep 19, 2017</p>
+              -->
+              <div class="meta">Date： <span class="postdate">2017年09月19日</span> Author： <a target="_blank" href="https://huangshaobing.github.io/huangshaobing">Shaobing Huang</a></div>
+              <br />
+              <blockquote><p>本文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"> 知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 </a>进行许可。</p></blockquote>
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#1-开发工具准备" id="markdown-toc-1-开发工具准备">1. 开发工具准备</a></li>
+  <li><a href="#2-软件环境" id="markdown-toc-2-软件环境">2. 软件环境</a></li>
+  <li><a href="#3-简单的基础工程搭建" id="markdown-toc-3-简单的基础工程搭建">3. 简单的基础工程搭建</a>    <ul>
+      <li><a href="#packagejson" id="markdown-toc-packagejson">Package.json</a></li>
+      <li><a href="#webpackconfigjs文件内容配置" id="markdown-toc-webpackconfigjs文件内容配置">webpack.config.js文件内容配置</a></li>
+      <li><a href="#serverjs-内容" id="markdown-toc-serverjs-内容">server.js 内容</a></li>
+      <li><a href="#srcentryappjsx-配置" id="markdown-toc-srcentryappjsx-配置">src/entry/app.jsx 配置</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>最近不忙，试了试搭建前端React工程，用Webpack打包，遇到的问题做个记录。</p>
+
+<!-- more -->
+
+<h2 id="1-开发工具准备">1. 开发工具准备</h2>
+<p>Macbook 笔记本开发，用习惯了Sublime Text，因此就用这个工具了，版本是3.0。
+首先要安装插件，使得jsx，scss文件语法有个颜色的直观体现，总比白色的代码好的多，😄
+（1）安装sass插件 —— Command + Shift + P 选择Package Control：Install Package 搜索sass点击安装即可；<br />
+（2）安装babel-sublime —— 同上安装过程，搜索babel安装；<br />
+（3）安装jsFormat<br />
+好了一个简单的开发工具准备完毕。</p>
+
+<h2 id="2-软件环境">2. 软件环境</h2>
+<p>首先要安装nodejs，自行安装吧</p>
+
+<h2 id="3-简单的基础工程搭建">3. 简单的基础工程搭建</h2>
+<p>（1）新建工程目录：clover-node<br />
+（2）执行npm init，创建package.json文件，按照提示输入内容一路回车～～<br />
+（3）创建工程目录与文件，最终的目录如下<br />
+	+ clover-node<br />
+	  + dist					————- 打包发布工程存放路径<br />
+	  + node_modules			————- 第三方安装包<br />
+	  + src                     ————- 源码<br />
+	  	+ component             ————- 公共组件<br />
+	  	  + Menu<br />
+	  	  + Navigator<br />
+	  	  ……<br />
+	  	+ config                ————- 配置文件<br />
+	  	+ entry                 ————- 入口文件<br />
+	  	+ page                  ————- 页面<br />
+	  	+ assets                ————- 资源文件<br />
+	  	  + image<br />
+	  	  + scss<br />
+	  -	webpack.config.js       ————- webpack配置<br />
+	  - server.js               ————- node启动server文件<br />
+	  - index.html              ————- 首页模版（开发）<br />
+	  - template.html           ————- 模版文件<br />
+	  - package.json<br /></p>
+
+<h4 id="packagejson">Package.json</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>第三方软件包，可以直接写入package.json文件后执行npm install，或者命令行npm install --save-dev babel-core css-loader 安装最新版 ```javascript {   "name": "clover-node",   "version": "1.0.0",   "description": "",   "main": "webpack.config.js",   "scripts": {
+"prestart": "npm install",
+"start": "export NODE_ENV=test&amp;&amp; node server",
+"build": "export NODE_ENV=production&amp;&amp; webpack -p",
+"test": "export NODE_ENV=dev&amp;&amp; node server"   },   "author": "Huang Shaobing",   "license": "ISC",   "devDependencies": {
+"babel-core": "^6.26.0",
+"babel-loader": "^7.1.2",
+"babel-preset-es2015": "^6.24.1",
+"babel-preset-react": "^6.24.1",
+"component-ajax": "0.0.2",
+"css-loader": "^0.28.7",
+"extract-text-webpack-plugin": "^3.0.0",
+"file-loader": "^0.11.2",
+"html-loader": "^0.5.1",
+"html-webpack-plugin": "^2.30.1",
+"moment": "^2.18.1",
+"node-sass": "^4.5.3",
+"react": "^15.6.1",
+"react-cookie": "^2.1.1",
+"react-dom": "^15.6.1",
+"react-helmet": "^5.2.0",
+"react-router-dom": "^4.2.2",
+"sass-loader": "^6.0.6",
+"style-loader": "^0.18.2",
+"url-loader": "^0.5.9",
+"webpack": "^3.5.6",
+"webpack-dev-server": "^2.8.1"   } }	 ```
+</code></pre>
+</div>
+
+<h4 id="webpackconfigjs文件内容配置">webpack.config.js文件内容配置</h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"path"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ExtractTextPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"extract-text-webpack-plugin"</span><span class="p">);</span>
+<span class="cm">/* 是否为开发模式 */</span>
+<span class="kd">var</span> <span class="nx">env_if_dev</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">==</span> <span class="s2">"test"</span> <span class="o">||</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">==</span> <span class="s2">"dev"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">env_if_dev</span> <span class="p">?</span> <span class="s2">"[name]"</span> <span class="p">:</span> <span class="s2">"[chunkhash:8].[name]"</span><span class="p">;</span>
+<span class="cm">/* CSS Plugins */</span>
+<span class="kd">var</span> <span class="nx">extractCSS</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s1">''</span> <span class="o">+</span> <span class="nx">filename</span> <span class="o">+</span> <span class="s1">'.css'</span><span class="p">);</span>
+<span class="cm">/* html Plugins */</span>
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+<span class="cm">/* html 模版 */</span>
+<span class="kd">var</span> <span class="nx">htmlPlugin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+	<span class="na">title</span><span class="p">:</span> <span class="s2">"首页"</span><span class="p">,</span>
+	<span class="na">filename</span><span class="p">:</span> <span class="s2">"../index.html"</span><span class="p">,</span>
+	<span class="na">template</span><span class="p">:</span> <span class="s2">"template.html"</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">modulesDirectories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"web_modules"</span><span class="p">,</span> <span class="s2">"node_modules"</span><span class="p">,</span> <span class="s2">"bower_components"</span><span class="p">,</span> <span class="s2">"src/config"</span><span class="p">,</span> <span class="s2">"src/scss"</span><span class="p">,</span> <span class="s2">"src"</span><span class="p">];</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">app</span><span class="p">:</span> <span class="p">[</span><span class="s2">"./src/entry/app.jsx"</span><span class="p">],</span>
+		<span class="na">vendor</span><span class="p">:</span> <span class="p">[</span><span class="s2">"react"</span><span class="p">,</span> <span class="s2">"react-dom"</span><span class="p">,</span> <span class="s1">'react-router'</span><span class="p">]</span>
+	<span class="p">},</span>
+	<span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">"dist/build"</span><span class="p">),</span>
+		<span class="na">publicPath</span><span class="p">:</span> <span class="s2">"/build/"</span><span class="p">,</span>
+		<span class="na">filename</span><span class="p">:</span> <span class="nx">filename</span> <span class="o">+</span> <span class="s2">".js"</span>
+	<span class="p">},</span>
+	<span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">modules</span><span class="p">:</span> <span class="nx">modulesDirectories</span><span class="p">,</span>
+		<span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.jsx'</span><span class="p">,</span> <span class="s1">'css'</span><span class="p">]</span>
+	<span class="p">},</span>
+	<span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+		<span class="na">rules</span><span class="p">:</span> <span class="p">[{</span>
+			<span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">js|jsx</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+			<span class="na">exclude</span><span class="p">:</span> <span class="sr">/</span><span class="se">(</span><span class="sr">node_modules|bower_components</span><span class="se">)</span><span class="sr">/</span><span class="p">,</span>
+			<span class="na">loader</span><span class="p">:</span> <span class="s1">'babel-loader'</span><span class="p">,</span>
+			<span class="na">query</span><span class="p">:</span> <span class="p">{</span>
+				<span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'es2015'</span><span class="p">,</span> <span class="s1">'react'</span><span class="p">]</span>
+			<span class="p">}</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">eot|woff|ttf|svg</span><span class="se">)</span><span class="sr">/</span><span class="p">,</span>
+			<span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader?name=[name].[ext]'</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">scss$/</span><span class="p">,</span>
+			<span class="na">use</span><span class="p">:</span> <span class="nx">ExtractTextPlugin</span><span class="p">.</span><span class="nx">extract</span><span class="p">({</span>
+				<span class="na">fallback</span><span class="p">:</span> <span class="s1">'style-loader'</span><span class="p">,</span>
+				<span class="c1">//resolve-url-loader may be chained before sass-loader if necessary</span>
+				<span class="na">use</span><span class="p">:</span> <span class="p">[</span><span class="s1">'css-loader'</span><span class="p">,</span> <span class="s1">'sass-loader'</span><span class="p">]</span>
+			<span class="p">})</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+			<span class="na">use</span><span class="p">:</span> <span class="nx">ExtractTextPlugin</span><span class="p">.</span><span class="nx">extract</span><span class="p">({</span>
+				<span class="na">fallback</span><span class="p">:</span> <span class="s1">'style-loader'</span><span class="p">,</span>
+				<span class="c1">//resolve-url-loader may be chained before sass-loader if necessary</span>
+				<span class="na">use</span><span class="p">:</span> <span class="p">[</span><span class="s1">'css-loader'</span><span class="p">]</span>
+			<span class="p">})</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+			<span class="na">loader</span><span class="p">:</span> <span class="s2">"html-loader"</span>
+		<span class="p">},</span> <span class="p">{</span>
+			<span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">png$/</span><span class="p">,</span>
+			<span class="na">loader</span><span class="p">:</span> <span class="s2">"file-loader?name=[hash:8].[name].[ext]"</span>
+		<span class="p">}]</span>
+	<span class="p">},</span>
+	<span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+		<span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
+			<span class="s2">"process.env"</span><span class="p">:</span> <span class="p">{</span>
+				<span class="na">NODE_ENV</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="s2">"production"</span><span class="p">)</span>
+			<span class="p">}</span>
+		<span class="p">}),</span>
+		<span class="c1">//ignoreFiles</span>
+		<span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+			<span class="na">name</span><span class="p">:</span> <span class="s1">'vendor'</span><span class="p">,</span>
+			<span class="na">filename</span><span class="p">:</span> <span class="s1">'base.js'</span>
+		<span class="p">}),</span>
+		<span class="nx">extractCSS</span><span class="p">,</span>
+		<span class="nx">htmlPlugin</span>
+	<span class="p">]</span>
+<span class="p">};</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">==</span> <span class="s2">"test"</span> <span class="o">||</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">==</span> <span class="s2">"dev"</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">config</span><span class="p">.</span><span class="nx">devtool</span> <span class="o">=</span> <span class="s2">"source-map"</span><span class="p">;</span>
+	<span class="nx">config</span><span class="p">.</span><span class="nx">output</span><span class="p">.</span><span class="nx">publicPath</span> <span class="o">=</span> <span class="s2">"/"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">config</span>
+</code></pre>
+</div>
+<h4 id="serverjs-内容">server.js 内容</h4>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="nx">WebpackDevServer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack-dev-server'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./webpack.config.js"</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">==</span> <span class="s2">"dev"</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">config</span><span class="p">.</span><span class="nx">entry</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s2">"webpack-dev-server/client?http://localhost:9090/"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="nx">config</span><span class="p">.</span><span class="nx">entry</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s2">"webpack-dev-server/client?http://192.168.1.100:8880/"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">compiler</span> <span class="o">=</span> <span class="nx">webpack</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebpackDevServer</span><span class="p">(</span><span class="nx">compiler</span><span class="p">,</span> <span class="p">{</span>
+
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"-----------"</span> <span class="o">+</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">==</span> <span class="s2">"dev"</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8880</span><span class="p">,</span> <span class="s1">'127.0.0.1'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="srcentryappjsx-配置">src/entry/app.jsx 配置</h4>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">render</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Route</span><span class="p">,</span><span class="nx">IndexRoute</span><span class="p">,</span> <span class="nx">Link</span><span class="p">,</span> <span class="nx">IndexLink</span><span class="p">,</span> <span class="nx">hashHistory</span><span class="p">,</span><span class="nx">HashRouter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router-dom'</span>
+
+<span class="kr">import</span> <span class="nx">Styles</span> <span class="nx">from</span> <span class="s1">'./_App.scss'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Home</span> <span class="nx">from</span> <span class="s1">'../page/Home/Home'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">List</span> <span class="nx">from</span> <span class="s1">'../page/List/List'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"-------"</span><span class="p">);</span>
+<span class="nx">render</span><span class="p">((</span>
+	<span class="o">&lt;</span><span class="nx">HashRouter</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">hashHistory</span><span class="p">}</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    	<span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">exact</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>    	<span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/list"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">List</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="sr">/HashRouter</span><span class="err">&gt;
+</span><span class="p">),</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'app'</span><span class="p">))</span>	
+
+</code></pre>
+</div>
+<p>这里用的react-router-dom 4.0 以上的版本，和以前的还是有些差别，直接食用Router会报错。要用HashRouter或者Browserouter，官方推荐Browserouter，但是这个现在有些浏览器还不支持，因此用了HashRouter。</p>
+
+
+            </article>
+          <hr>
+          <blockquote><p>对于本文内容有问题或建议的小伙伴，欢迎交流讨论。</p></blockquote>
+      </div>
+      </div>
+      <!--comment-->
+     
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer" role="contentinfo">
+	<!--不蒜子pv/uv统计-->
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2017 <a href="https://huangshaobing.github.io/huangshaobing" target="_blank"><code>Shaobing Huang</code></a>. All rights reserved. </p>
+		<p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a></p>
+	</div>
+	<ul id="gotop"><li><span>TOP</span></li></ul>
+</footer>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="/styles/js/function.min.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+<script src="/styles/js/application.min.js"></script>
+<script src="/styles/js/jquery-starfield.min.js"></script>
+  </body>
+</html>
