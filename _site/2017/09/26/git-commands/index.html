@@ -71,8 +71,8 @@
 <div class="banner">
   <div class="container lh30">
   	
-    	<a href="/huangshaobing/categories/#iOS-ref">iOS</a>	/
-    	<a href="/huangshaobing/tag/#CocoaPods-ref">CocoaPods</a>
+    	<a href="/huangshaobing/categories/#git-ref">git</a>	/
+    	<a href="/huangshaobing/tag/#git-ref">git</a>
     
 <!--       <div id="search-container" class="pull-right">
           <input type="text" id="search-input" placeholder=" 试试直接搜索吧...">
@@ -108,41 +108,30 @@
             </header>
             <article class="post-content">
               <ul id="markdown-toc">
-  <li><a href="#1-安装ruby" id="markdown-toc-1-安装ruby">1 安装ruby</a></li>
-  <li><a href="#2-安装-cocoapods" id="markdown-toc-2-安装-cocoapods">2 安装 CocoaPods</a></li>
-  <li><a href="#3-编写-podfile-示例" id="markdown-toc-3-编写-podfile-示例">3 编写 Podfile 示例</a></li>
-  <li><a href="#4-执行-pod-installupdate" id="markdown-toc-4-执行-pod-installupdate">4 执行 pod install/update</a></li>
+  <li><a href="#1-科隆代码" id="markdown-toc-1-科隆代码">1 科隆代码</a></li>
+  <li><a href="#2-新增文件" id="markdown-toc-2-新增文件">2 新增文件</a></li>
+  <li><a href="#3-提交" id="markdown-toc-3-提交">3 提交</a></li>
+  <li><a href="#4-push" id="markdown-toc-4-push">4 push</a></li>
 </ul>
 
-<p>Mac 环境下CocoaPods 搭建。</p>
+<p>git 命令行使用</p>
 
 <!-- more -->
 
-<h2 id="1-安装ruby">1 安装ruby</h2>
-<p>（1）curl -L https://get.rvm.io | bash -s stable
-   （2）source ~/.rvm/scripts/rvm
-   （3）检查安装是否成功 rvm -v</p>
+<h2 id="1-科隆代码">1 科隆代码</h2>
+<p>git clone https://github.com/huangshaobing/huangshaobing.git</p>
 
-<h2 id="2-安装-cocoapods">2 安装 CocoaPods</h2>
-<p>（1）如果已经安装过CocoaPods，并且版本过低，先删除：gem uninstall cocoapods
-   （2）安装：gem install cocoapods
-   （3）pod setup 更新Pod源</p>
+<h2 id="2-新增文件">2 新增文件</h2>
+<p>#增加全部新增，修改文件
+   git add . 
+   #增加某个文件
+   git add index.html</p>
 
-<h2 id="3-编写-podfile-示例">3 编写 Podfile 示例</h2>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   	<span class="nx">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
-	<span class="nl">platform</span> <span class="p">:</span><span class="nx">ios</span><span class="p">,</span> <span class="s1">'10.0'</span>
-	<span class="nx">use_frameworks</span><span class="o">!</span>
+<h2 id="3-提交">3 提交</h2>
+<p>git commit -m ‘修改文件’</p>
 
-	<span class="nx">target</span> <span class="s2">"ShopList"</span> <span class="k">do</span>
-
-	<span class="nx">pod</span> <span class="s1">'Alamofire'</span><span class="p">,</span> <span class="s1">'~&gt;4.0'</span>
-	<span class="nx">pod</span> <span class="s1">'RealmSwift'</span>
-
-	<span class="nx">end</span>
-</code></pre>
-</div>
-
-<h2 id="4-执行-pod-installupdate">4 执行 pod install/update</h2>
+<h2 id="4-push">4 push</h2>
+<p>git push origin master  #push 到master分枝</p>
 
             </article>
           <hr>
