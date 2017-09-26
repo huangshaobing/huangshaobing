@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-	<title>博文分类</title>
+	<title>Mac CocoaPods 环境安装</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,8 +59,8 @@
     <div class="container" >
   	
         <!--
-		    <h1>博文分类</h1>
-		    <p>Post on  by <a href="/about">Shaobing Huang</a></p>
+		    <h1>Mac CocoaPods 环境安装</h1>
+		    <p>Post on Sep 23, 2017 by <a href="/about">Shaobing Huang</a></p>
 		-->
         <h1>世界辣么大，我也想去瞧瞧。</h1>
     
@@ -71,7 +71,8 @@
 <div class="banner">
   <div class="container lh30">
   	
-    	Clover Blog
+    	<a href="/categories/#iOS-ref">iOS</a>	/
+    	<a href="/tag/#CocoaPods-ref">CocoaPods</a>
     
 <!--       <div id="search-container" class="pull-right">
           <input type="text" id="search-input" placeholder=" 试试直接搜索吧...">
@@ -87,116 +88,74 @@
     <div class="col-md-3">
       <div class="sidebar hidden-print" role="complementary">
         <div id="navigation">
-        	<h1>博文分类</h1>
-      		<ul class="nav sidenav">
-				
-			    	 
-				    	<li><a href="/#我的说说-ref">
-				    		我的说说 <span style="color: #999999;" >(1)</span>
-				    	</a></li>
-			    	 
-				    	<li><a href="/#React-ref">
-				    		React <span style="color: #999999;" >(1)</span>
-				    	</a></li>
-			    	 
-				    	<li><a href="/#iOS-ref">
-				    		iOS <span style="color: #999999;" >(1)</span>
-				    	</a></li>
-			    	
-			  	
-          	</ul>
-        </div>
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+  </ul>
+</div> 
       </div>
     </div>
     <div class="col-md-9" role="main">
       <div class="panel docs-content">
         <div class="wrapper">
-          <div class="home">
-			 
-			  <h2 class="title-border" id="我的说说-ref">我的说说</h2><hr>
-			  <div>
-			      
-			    <div id="posts-list">
+            <header class="post-header">
+              <h1 class="post-title">Mac CocoaPods 环境安装</h1>
+              <!--
+                <p class="post-meta">Sep 23, 2017</p>
+              -->
+              <div class="meta">Date： <span class="postdate">2017年09月23日</span> Author： <a target="_blank" href="http://localhost:4000">Shaobing Huang</a></div>
+              <br />
+              <blockquote><p>本文章采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh"> 知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 </a>进行许可。</p></blockquote>
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#1-安装ruby" id="markdown-toc-1-安装ruby">1 安装ruby</a></li>
+  <li><a href="#2-安装-cocoapods" id="markdown-toc-2-安装-cocoapods">2 安装 CocoaPods</a></li>
+  <li><a href="#3-编写-podfile-示例" id="markdown-toc-3-编写-podfile-示例">3 编写 Podfile 示例</a></li>
+  <li><a href="#4-执行-pod-installupdate" id="markdown-toc-4-执行-pod-installupdate">4 执行 pod install/update</a></li>
+</ul>
 
-  
-    
-    	
-    	    <div class="posts-list-item">
-                <div class="posts-content">
-                     <span class="posts-list-meta">2017-09-18</span>
-                     <a class="posts-list-name bubble-float-left" href="/2017/09/18/default/">Hello,World!!</a>
-                     <span class='circle'></span>
-                </div>
-            </div>
-    	
-    
-  
+<p>Mac 环境下CocoaPods 搭建。</p>
 
+<!-- more -->
 
+<h2 id="1-安装ruby">1 安装ruby</h2>
+<p>（1）curl -L https://get.rvm.io | bash -s stable
+   （2）source ~/.rvm/scripts/rvm
+   （3）检查安装是否成功 rvm -v</p>
 
+<h2 id="2-安装-cocoapods">2 安装 CocoaPods</h2>
+<p>（1）如果已经安装过CocoaPods，并且版本过低，先删除：gem uninstall cocoapods
+   （2）安装：gem install cocoapods
+   （3）pod setup 更新Pod源</p>
+
+<h2 id="3-编写-podfile-示例">3 编写 Podfile 示例</h2>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>   	<span class="nx">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+	<span class="nl">platform</span> <span class="p">:</span><span class="nx">ios</span><span class="p">,</span> <span class="s1">'10.0'</span>
+	<span class="nx">use_frameworks</span><span class="o">!</span>
+
+	<span class="nx">target</span> <span class="s2">"ShopList"</span> <span class="k">do</span>
+
+	<span class="nx">pod</span> <span class="s1">'Alamofire'</span><span class="p">,</span> <span class="s1">'~&gt;4.0'</span>
+	<span class="nx">pod</span> <span class="s1">'RealmSwift'</span>
+
+	<span class="nx">end</span>
+</code></pre>
 </div>
 
+<h2 id="4-执行-pod-installupdate">4 执行 pod install/update</h2>
 
-			  </div><hr>
-			 
-			  <h2 class="title-border" id="React-ref">React</h2><hr>
-			  <div>
-			      
-			    <div id="posts-list">
-
-  
-    
-    	
-    	    <div class="posts-list-item">
-                <div class="posts-content">
-                     <span class="posts-list-meta">2017-09-19</span>
-                     <a class="posts-list-name bubble-float-left" href="/2017/09/19/react4-webpack/">React Webpack工程搭建</a>
-                     <span class='circle'></span>
-                </div>
-            </div>
-    	
-    
-  
-
-
-
-</div>
-
-
-			  </div><hr>
-			 
-			  <h2 class="title-border" id="iOS-ref">iOS</h2><hr>
-			  <div>
-			      
-			    <div id="posts-list">
-
-  
-    
-    	
-    	    <div class="posts-list-item">
-                <div class="posts-content">
-                     <span class="posts-list-meta">2017-09-23</span>
-                     <a class="posts-list-name bubble-float-left" href="/2017/09/23/iOS-CocoaPods/">Mac CocoaPods 环境安装</a>
-                     <span class='circle'></span>
-                </div>
-            </div>
-    	
-    
-  
-
-
-
-</div>
-
-
-			  </div><hr>
-			
-          </div>
-        </div>
+            </article>
+          <hr>
+          <blockquote><p>对于本文内容有问题或建议的小伙伴，欢迎交流讨论。</p></blockquote>
       </div>
+      </div>
+      <!--comment-->
+     
+      
     </div>
   </div>
 </div>
+
 
     <footer class="footer" role="contentinfo">
 	<!--不蒜子pv/uv统计-->
