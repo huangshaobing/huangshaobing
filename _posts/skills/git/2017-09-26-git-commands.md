@@ -26,3 +26,9 @@ git 命令行使用
 
 ## 4 push 
    git push origin master  #push 到master分枝
+
+   #强制覆盖提交
+   git push --force origin master
+   git push -f
+
+   
